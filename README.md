@@ -1,1 +1,2 @@
-# hci_repo
+# Project repository for the human-computer-interaction seminary at Ulm University
+## Session for usability, usability testing and UX
