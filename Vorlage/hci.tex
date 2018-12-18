@@ -1,0 +1,103 @@
+\documentclass{beamer}
+\setbeamercovered{dynamic}
+
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}     % deutsche Sonderzeichen
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{amssymb, amsmath}   % Pakete für Mathe-Umgebungen und -Symbole
+\usepackage{hyperref}
+\usepackage{csquotes}
+
+\usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
+\addbibresource{resources/bib.bib}
+\DeclareLanguageMapping{german}{german-apa}
+
+% Zwei Versionen des Titles - s.g. short title für footer und der normale Titel für die Titelseite
+\title[Usability Testing \& UX]{Usability, Usability Testing \& User Experience}
+\author{Lukas Jox \textbar\ Miriam Nick}
+\date{08. Januar 2019}
+\institute
+{Seminar: Mensch-Computer-Interaktion\\[0.7em] Institut für Psychologie und Pädagogik}
+
+% Wenn dir die Präsentation nicht gefällt: Man kann das Aussehen dramatisch verändert, indem man einfach hier Thema und Farbschema ändert - im Internet findet man etliche Übersichten, wie Alternativen aussehen
+% Ich passe mich da gerne völlig deinen Wünschen an, Design ist nicht so mein Ding... ;-)
+\usetheme{Warsaw}
+\usecolortheme{beaver}
+
+\beamertemplatenavigationsymbolsempty
+\setbeamercovered{transparent}
+
+
+\begin{document}
+
+% Der Hauptunterschied zu normalen LaTeX-Dokumenten liegt darin, dass man jedes "Frame" einzeln definiert - auf denen kann man dann mit den vertrauten Instrumenten und einigen anderen Arbeiten.
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+
+%showing page number
+\expandafter\def\expandafter\insertshorttitle\expandafter{%
+  \insertshorttitle\hfill%
+  \insertframenumber$\vert$\inserttotalframenumber}
+  
+% Auch sections usw. können wie gewohnt verwendet werdet - allerdings werden diese nicht selbstständig angezeigt, stattdessen kann man einzelnen Frames einen \frametitle verpassen
+\section{Einführung in Beamer}
+\subsection{Frames}
+
+\begin{frame}
+\frametitle{Beispielfolie}
+Folien können mit Bekannten Elementen oder einfach mit Text gefüllt werden:
+\vspace{0,5cm}
+\begin{itemize}
+\item Etwa Aufzählungen
+\item Figures (für Beispiele, siehe das vollständige Dokument im Ordner Beispiel)
+\item Boxen (s. nächste Folie)
+\item Und wahrscheinlich noch manches mehr
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Beispiele für Blocks}
+
+\only<1-3>{\begin{block}{}
+Ein einfacher, leerer Block
+\end{block}}
+
+\begin{block}{Ein Block mit Titel und einer numerischen Aufzählung}
+\begin{enumerate}
+\item Da \LaTeX\ nur PDF-Dokumente erstellt, müssen wir natürlich ohne Animationen usw. auskommen.
+\pause
+\item Zu diesem Zweck werden einfach mehrere Versionen der Folie mit Teilen des Gesamt-Inhalts erstellt.
+\pause
+\item Dazu dient der \char`\\pause-Befehl. Für komplexere Kombinationen kann man auch Elemente mit \char`\\only$<$$x$-$y$$>$\{\} umgeben, um es nur für die Folien-Versionen $x$ bis $y$ anzuzeigen, wie beim folgenden Stichpunkt und dem leeren Block:
+\only<4>{\item Dass die weiteren Items schon transparent angezeigt werden liegt an der \char`\\setbeamercovered\{transparent\}-Option in der Präambel, diese kann auch einfach rausgenommen (oder der Grad der Transparenz angepasst) werden.}
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}
+Natürlich war die vorangehende Folie mit dem ganzen Inhalt völlig überfüllt, das sollte in echten Präsentationen nicht so aussehen ...
+\end{frame}
+
+\subsection{Zitationen}
+
+\begin{frame}
+\frametitle{Beispielfolie mit Zitation von \textcite{Frankl1996})}
+Falls du noch nicht mit APA-cite gearbeitet hast: Wir haben zwei Haupt-kommandos:\\
+\ \\
+\texttt{\char`\\textcite\{\}} um so \textcite{Frankl1996} im Text zu zitieren und \char`\\parencite\{\} um Zitationen in Klammern anzugeben \parencite{Frankl1996}.\\
+Eine weitere Alternative, etwa um mehrere Zitationen APA-gerecht in einer Klammer darzustellen, sind \char`\\citeauthor\{\} und \char`\\citeyear\{\} (z.B., \citeauthor{Frankl1996}, \citeyear{Frankl1996}; \citeauthor{Frankl2015}, \citeyear{Frankl2015}). 
+\end{frame}
+
+\begin{frame}
+\printbibliography
+\end{frame}
+
+\end{document}
